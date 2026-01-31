@@ -11,7 +11,16 @@ public class Docente {
     private String apellido;
     private String cargaHoraria; // Antes era CargoDocente
     private List<Asignatura> asignaturas;
-
+    
+    public Docente(){
+        this.legajo = "";
+        this.nombre = "";
+        this.apellido = "";
+        this.cargaHoraria = "";
+        this.asignaturas = new ArrayList<>();
+    }
+    
+    
     public Docente(String legajo, String nombre, String apellido) {
         this.legajo = legajo;
         this.nombre = nombre;

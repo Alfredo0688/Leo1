@@ -6,18 +6,20 @@ public class Asignatura {
     private String nombre;
     private String descripcion;
 
-    public Asignatura(Integer codigo, String nombre, String descripcion) {
-        this.codigo = codigo;
+    public Asignatura() {
+        this.nombre = "";
+        this.descripcion = "";
+    }
+    
+    
+    
+    public Asignatura(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
 
     public Integer getCodigo() {
         return codigo;
-    }
-
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
     }
 
     public String getNombre() {

@@ -10,12 +10,26 @@ public class Instituto {
     private final List<Docente> docentes;
     private final List<Asignatura> asignaturas;
 
+    public Instituto() {
+        this.denominacion = "";
+        this.docentes = new ArrayList<>();
+        this.asignaturas = new ArrayList<>();
+    }
     
-    public Instituto(Integer codigo, String denominacion) {
-        this.codigo = codigo;
+    
+    
+    public Instituto(String denominacion) {
         this.denominacion = denominacion;
         this.docentes = new ArrayList<>();
         this.asignaturas = new ArrayList<>();
+    }
+    
+    public void setDenominacion(String denominacion){
+        this.denominacion = denominacion;
+    }
+    
+    public String getDenominacion(){
+        return this.denominacion;
     }
 
     public void agregarDocente(Docente docente) {
