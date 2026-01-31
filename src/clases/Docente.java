@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +23,18 @@ public class Docente {
     private String nombre;
     private String apellido;
     private String cargaHoraria; // Antes era CargoDocente
+    @ManyToMany
+    @JoinTable(
+        //creacion tabla intermedia
+        name = "docente_asignatura",
+        joinColumns = @JoinColumn(name = "docente_id"), //nombre campo en tabla intermedia
+        inverseJoinColumns = @JoinColumn(name = "asignatura_id") // nombre campo en tabla intermedia
+    )
     private List<Asignatura> asignaturas;
+    
+    @ManyToOne
+    @JoinColumn(name = "instituto_id")
+    private Instituto instituto;
     
     public Docente(){
         this.legajo = "";
@@ -37,6 +52,15 @@ public class Docente {
         this.asignaturas = new ArrayList<>();
     }
 
+    public Instituto getInstituto() {
+        return instituto;
+    }
+
+    public void setInstituto(Instituto instituto) {
+        this.instituto = instituto;
+    }
+
+    
     // Métodos para manejar carga horaria
     public String getCargaHoraria() {
         return cargaHoraria;

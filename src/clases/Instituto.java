@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +17,11 @@ public class Instituto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
     private String denominacion;
+    //mappedBy apunta al atributo de tipo Instituto en las clases relacionadas (Docente.instituto y Asignatura.instituto).
+    @OneToMany(mappedBy = "instituto")
     private final List<Docente> docentes;
+    
+    @OneToMany(mappedBy = "instituto")
     private final List<Asignatura> asignaturas;
 
     public Instituto() {
