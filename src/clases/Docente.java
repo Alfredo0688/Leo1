@@ -45,10 +45,11 @@ public class Docente {
     }
     
     
-    public Docente(String legajo, String nombre, String apellido) {
+    public Docente(String legajo, String nombre, String apellido, String cargahoraria) {
         this.legajo = legajo;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.cargaHoraria = cargahoraria;
         this.asignaturas = new ArrayList<>();
     }
 

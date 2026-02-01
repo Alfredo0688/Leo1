@@ -29,7 +29,18 @@ public class DAO {
         }
     }
     
-    
+    public void insertAsignatura(Asignatura asignatura)throws Exception{
+        try{
+            em.getTransaction().begin();
+            em.persist(asignatura);
+            em.getTransaction().commit();
+        
+        }catch(Exception e){
+            em.getTransaction().rollback();
+            e.printStackTrace();
+            throw new Exception("No se pudo insertar la asignatura");
+        }
+    }   
     
     
     
