@@ -5,36 +5,44 @@ package clases;
 public class Main {
 
     public static void main(String[] args) {
+    
+        //Instanciamos la clase DAO
         DAO dao = new DAO();
-        /*
-        Docente docente = new Docente("ABC-88", "Pepe", "Lepiur", "50");
+        //Creamos un Instituto
+        dao.
+        Instituto instituto = new Instituto("Instituto Terciario");
+        
+        //Grabamos el instituto en la base de datos
         try{
-            dao.insertDocente(docente);
-        }catch(Exception e){
+            dao.insertInstituto(instituto);
+        }
+        catch(Exception e){
             System.out.println(e.getMessage());
-        }*/
+        }
+
+        //Creamos una asignatura
         
-        Asignatura asignatura = new Asignatura("Programación Lógica", "Python");
+        Asignatura pl = new Asignatura("Programación Lógica I", "Diagramas de flujo y pseudocodigo");
+        //asignamos el instituto a la asignatura
+        pl.setInstituto(instituto);
         
-        //creamos asignatura
+        //Grabamos la asignatura en la base de datos
         try{
-            dao.insertAsignatura(asignatura);
+            dao.insertAsignatura(pl);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
         
-           
-
-        //Asignatura asignatura = new Asignatura("Programación 1", "Lógica y pseudocodigos");
+        //creamos un docente
+        Docente docente = new Docente("ABC-88", "Alfredo", "Nuñez", "80");
+        docente.setInstituto(instituto);
+        docente.agregarAsignatura(pl);
+        try{
+            dao.insertDocente(docente);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         
-        //Instituto instituto = new Instituto("Instituto de educación secundaria");
-        
-        //docente.agregarAsignatura(asignatura);
-        //instituto.agregarDocente(docente);
-        
-        
-        //ver el nombre del docente en el instituto
-        //System.out.println("Nombre del docente" + instituto.getAllDocentes().get(0).getNombre());
     }
     
 }

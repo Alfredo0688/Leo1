@@ -43,6 +43,18 @@ public class DAO {
     }   
     
     
+      public void insertInstituto(Instituto instituto)throws Exception{
+        try{
+            em.getTransaction().begin();
+            em.persist(instituto);
+            em.getTransaction().commit();
+        
+        }catch(Exception e){
+            em.getTransaction().rollback();
+            e.printStackTrace();
+            throw new Exception("No se pudo insertar la asignatura");
+        }
+    }   
     
     
     
