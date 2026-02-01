@@ -3,11 +3,38 @@ package clases;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 
 public class DAO {
-    private final EntityManager em = Persistence.createEntityManagerFactory("Unidad_Persistencia").createEntityManager();
+    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Unidad_Persistencia");
+            
+    private EntityManager em;
+    
+    public DAO(){
+        this.em = emf.createEntityManager();
+    }
+    
+    public void insertDocente(Docente docente)throws Exception{
+        try{
+            em.getTransaction().begin();
+            em.persist(docente);
+            em.getTransaction().commit();
+        
+        }catch(Exception e){
+            em.getTransaction().rollback();
+            e.printStackTrace();
+            throw new Exception("No se pudo insertar al docente");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
     
     /*
     public void insertInstituto(Instituto instituto)throws Exception{
