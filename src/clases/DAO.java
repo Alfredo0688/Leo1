@@ -16,47 +16,73 @@ public class DAO {
         this.em = emf.createEntityManager();
     }
     
-    public void insertDocente(Docente docente)throws Exception{
-        try{
+    
+    public void beginTransaction() {
+        if (!em.getTransaction().isActive()) {
             em.getTransaction().begin();
-            em.persist(docente);
-            em.getTransaction().commit();
-        
-        }catch(Exception e){
-            em.getTransaction().rollback();
-            e.printStackTrace();
-            throw new Exception("No se pudo insertar al docente");
         }
     }
     
-    public void insertAsignatura(Asignatura asignatura)throws Exception{
-        try{
-            em.getTransaction().begin();
-            em.persist(asignatura);
+    public void commitTransaction() {
+        if (em.getTransaction().isActive()) {
             em.getTransaction().commit();
-        
-        }catch(Exception e){
-            em.getTransaction().rollback();
-            e.printStackTrace();
-            throw new Exception("No se pudo insertar la asignatura");
         }
-    }   
+    }
     
-    
-      public void insertInstituto(Instituto instituto)throws Exception{
-        try{
-            em.getTransaction().begin();
-            em.persist(instituto);
-            em.getTransaction().commit();
-        
-        }catch(Exception e){
+    public void rollbackTransaction() {
+        if (em.getTransaction().isActive()) {
             em.getTransaction().rollback();
-            e.printStackTrace();
-            throw new Exception("No se pudo insertar la asignatura");
         }
-    }   
+    }
+    
+    public void close() {
+        if (em.isOpen()) {
+            em.close();
+        }
+    }
     
     
+    public void insertDocente(Docente docente) {
+        em.persist(docente);
+    }
+
+    public void insertAsignatura(Asignatura asignatura) {
+        em.persist(asignatura);
+    }
+
+    public void insertInstituto(Instituto instituto) {
+        em.persist(instituto);
+    }
+    
+    public void deleteInstituto(Integer id) throws Exception{
+        
+        Instituto instituto = em.find(Instituto.class, id);
+        
+        if (instituto == null){
+            throw new Exception ("No existe el instituto: " + id + " en la base de datos");
+        }
+        em.remove(instituto);
+    }
+    
+       public void deleteDocente(Integer id) throws Exception{
+        
+        Docente docente = em.find(Docente.class, id);
+        
+        if (docente == null){
+            throw new Exception ("No existe el docente: " + id + " en la base de datos");
+        }
+        em.remove(docente);
+    }
+    
+       public void deleteAsignatura(Integer id) throws Exception{
+        
+        Asignatura asignatura = em.find(Asignatura.class, id);
+        
+        if (asignatura == null){
+            throw new Exception ("No existe la asignatura: " + id + " en la base de datos");
+        }
+        em.remove(asignatura);
+    }
     
     
     /*

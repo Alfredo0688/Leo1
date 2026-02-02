@@ -8,39 +8,25 @@ public class Main {
     
         //Instanciamos la clase DAO
         DAO dao = new DAO();
-        //Creamos un Instituto
-        dao.
-        Instituto instituto = new Instituto("Instituto Terciario");
-        
-        //Grabamos el instituto en la base de datos
         try{
-            dao.insertInstituto(instituto);
+            
+            dao.beginTransaction();
+            
+            //Asignatura asig1 = new Asignatura("Matematicas 1", "Preposiciones");
+            //dao.insertAsignatura(asig1);
+            
+            dao.deleteInstituto(1);
+            
+            dao.commitTransaction();
         }
         catch(Exception e){
-            System.out.println(e.getMessage());
+            dao.rollbackTransaction();
+            e.printStackTrace(); // Muestra el error
+            // Opcional: mostrar mensaje al usuario
+            System.out.println("Error: " + e.getMessage());
         }
-
-        //Creamos una asignatura
-        
-        Asignatura pl = new Asignatura("Programación Lógica I", "Diagramas de flujo y pseudocodigo");
-        //asignamos el instituto a la asignatura
-        pl.setInstituto(instituto);
-        
-        //Grabamos la asignatura en la base de datos
-        try{
-            dao.insertAsignatura(pl);
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        
-        //creamos un docente
-        Docente docente = new Docente("ABC-88", "Alfredo", "Nuñez", "80");
-        docente.setInstituto(instituto);
-        docente.agregarAsignatura(pl);
-        try{
-            dao.insertDocente(docente);
-        }catch(Exception e){
-            System.out.println(e.getMessage());
+        finally{
+            dao.close();
         }
         
     }

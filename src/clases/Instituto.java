@@ -3,6 +3,7 @@ package clases;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,10 +19,10 @@ public class Instituto {
     private Integer codigo;
     private String denominacion;
     //mappedBy apunta al atributo de tipo Instituto en las clases relacionadas (Docente.instituto y Asignatura.instituto).
-    @OneToMany(mappedBy = "instituto")
+    @OneToMany(mappedBy = "instituto", cascade = CascadeType.REMOVE)
     private final List<Docente> docentes;
     
-    @OneToMany(mappedBy = "instituto")
+    @OneToMany(mappedBy = "instituto", cascade = CascadeType.REMOVE)
     private final List<Asignatura> asignaturas;
 
     public Instituto() {
