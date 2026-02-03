@@ -26,11 +26,11 @@ public class Docente {
     @ManyToMany
     @JoinTable(
         //creacion tabla intermedia
-        name = "docente_asignatura",
+        name = "docentes_asignaturas",
         joinColumns = @JoinColumn(name = "docente_id"), //nombre campo en tabla intermedia
         inverseJoinColumns = @JoinColumn(name = "asignatura_id") // nombre campo en tabla intermedia
     )
-    private List<Asignatura> asignaturas;
+    private List<Asignatura> asignaturas = new ArrayList<>();;
     
     @ManyToOne
     @JoinColumn(name = "instituto_id")
@@ -41,7 +41,6 @@ public class Docente {
         this.nombre = "";
         this.apellido = "";
         this.cargaHoraria = "";
-        this.asignaturas = new ArrayList<>();
     }
     
     
@@ -50,7 +49,6 @@ public class Docente {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cargaHoraria = cargahoraria;
-        this.asignaturas = new ArrayList<>();
     }
 
     public Instituto getInstituto() {
@@ -81,7 +79,7 @@ public class Docente {
     }
     
     public void quitarAsignatura(Asignatura asignatura){
-         asignaturas.removeIf(asig -> asig.getCodigo().equals(asignatura.getCodigo()));
+         asignaturas.removeIf(asig -> asig.getId().equals(asignatura.getId()));
     }
     
     // Getters y setters

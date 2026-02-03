@@ -16,27 +16,25 @@ import javax.persistence.Table;
 public class Instituto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codigo;
+    private Integer id;
     private String denominacion;
     //mappedBy apunta al atributo de tipo Instituto en las clases relacionadas (Docente.instituto y Asignatura.instituto).
     @OneToMany(mappedBy = "instituto", cascade = CascadeType.REMOVE)
-    private final List<Docente> docentes;
+    private List<Docente> docentes = new ArrayList<>();
     
     @OneToMany(mappedBy = "instituto", cascade = CascadeType.REMOVE)
-    private final List<Asignatura> asignaturas;
+    private List<Asignatura> asignaturas = new ArrayList<>();
 
     public Instituto() {
         this.denominacion = "";
-        this.docentes = new ArrayList<>();
-        this.asignaturas = new ArrayList<>();
     }
-    
-    
     
     public Instituto(String denominacion) {
         this.denominacion = denominacion;
-        this.docentes = new ArrayList<>();
-        this.asignaturas = new ArrayList<>();
+    }
+    
+    public Integer getId(){
+        return this.id;
     }
     
     public void setDenominacion(String denominacion){
@@ -66,7 +64,7 @@ public class Instituto {
     @Override
     public String toString() {
         return "Instituto{" +
-                "codigo=" + codigo +
+                "codigo=" + id +
                 ", denominacion='" + denominacion + '\'' +
                 ", docentes=" + docentes +
                 ", asignaturas=" + asignaturas +

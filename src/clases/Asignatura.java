@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Asignatura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codigo;
+    private Integer id;
     private String nombre;
     private String descripcion;
     
@@ -41,8 +41,8 @@ public class Asignatura {
         this.instituto = instituto;
     }
 
-    public Integer getCodigo() {
-        return codigo;
+    public Integer getId() {
+        return id;
     }
 
     public String getNombre() {
@@ -63,7 +63,7 @@ public class Asignatura {
 
     @Override
     public String toString() {
-        return "Asignatura{" + "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
+        return "Asignatura{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
     }
     
     
