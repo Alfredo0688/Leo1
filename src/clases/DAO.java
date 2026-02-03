@@ -64,7 +64,7 @@ public class DAO {
         em.remove(instituto);
     }
     
-       public void deleteDocente(Integer id) throws Exception{
+    public void deleteDocente(Integer id) throws Exception{
         
         Docente docente = em.find(Docente.class, id);
         
@@ -74,7 +74,7 @@ public class DAO {
         em.remove(docente);
     }
     
-       public void deleteAsignatura(Integer id) throws Exception{
+    public void deleteAsignatura(Integer id) throws Exception{
         
         Asignatura asignatura = em.find(Asignatura.class, id);
         
@@ -83,6 +83,43 @@ public class DAO {
         }
         em.remove(asignatura);
     }
+    
+    public Asignatura buscarAsignatura(Integer id) throws Exception{
+           Asignatura asignatura = em.find(Asignatura.class, id);
+           return asignatura;
+    }
+       
+    public void agregarAsignaturaADocente(int docenteId, int asignaturaId) throws Exception {
+        Docente docente = em.find(Docente.class, docenteId);
+        Asignatura asignatura = em.find(Asignatura.class, asignaturaId);
+
+        if (docente == null || asignatura == null) {
+            throw new Exception("Docente o Asignatura no encontrados");
+        }
+
+        // Añadir (JPA manejará la tabla intermedia)
+        docente.agregarAsignatura(asignatura);
+
+        // Si es bidireccional:
+        // asignatura.getDocentes().add(docente);
+    }
+    
+     public void quitarAsignaturaADocente(int docenteId, int asignaturaId) throws Exception {
+        Docente docente = em.find(Docente.class, docenteId);
+        Asignatura asignatura = em.find(Asignatura.class, asignaturaId);
+
+        // Quitar //elimina de la lista y se borrará el registro de la tabla intermedia
+        docente.quitarAsignatura(asignatura);
+
+        // Si es bidireccional:
+        // asignatura.getDocentes().add(docente);
+    }
+    
+    
+    
+    
+    
+    
     
     
     /*

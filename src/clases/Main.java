@@ -12,11 +12,9 @@ public class Main {
             
             dao.beginTransaction();
             
-            //Asignatura asig1 = new Asignatura("Matematicas 1", "Preposiciones");
-            //dao.insertAsignatura(asig1);
+            dao.quitarAsignaturaADocente(2, 2);
             
-            dao.deleteInstituto(1);
-            
+         
             dao.commitTransaction();
         }
         catch(Exception e){
