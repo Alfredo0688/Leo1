@@ -77,11 +77,11 @@ public class Docente {
     public List<Asignatura> getAllAsignaturas() {
         return this.asignaturas;
     }
-    
+    /*
     public void quitarAsignatura(Asignatura asignatura){
          asignaturas.removeIf(asig -> asig.getId().equals(asignatura.getId()));
     }
-    
+    */
     // Getters y setters
     public Integer getId() {
         return id;

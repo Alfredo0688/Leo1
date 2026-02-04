@@ -88,6 +88,11 @@ public class DAO {
            Asignatura asignatura = em.find(Asignatura.class, id);
            return asignatura;
     }
+    
+    public Instituto buscarInstituto(Integer id) throws Exception{
+           Instituto instituto = em.find(Instituto.class, id);
+           return instituto;
+    }
        
     public void agregarAsignaturaADocente(int docenteId, int asignaturaId) throws Exception {
         Docente docente = em.find(Docente.class, docenteId);
@@ -103,7 +108,7 @@ public class DAO {
         // Si es bidireccional:
         // asignatura.getDocentes().add(docente);
     }
-    
+    /*
      public void quitarAsignaturaADocente(int docenteId, int asignaturaId) throws Exception {
         Docente docente = em.find(Docente.class, docenteId);
         Asignatura asignatura = em.find(Asignatura.class, asignaturaId);
@@ -114,7 +119,7 @@ public class DAO {
         // Si es bidireccional:
         // asignatura.getDocentes().add(docente);
     }
-    
+    */
     
     
     

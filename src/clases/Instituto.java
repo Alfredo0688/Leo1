@@ -44,19 +44,19 @@ public class Instituto {
     public String getDenominacion(){
         return this.denominacion;
     }
-
+/*
     public void agregarDocente(Docente docente) {
         this.docentes.add(docente);
     }
-
+*/
     public void agregarAsignatura(Asignatura asignatura) {
         this.asignaturas.add(asignatura);
     }
-
+/*
     public List<Docente> getAllDocentes() {
         return docentes;
     }
-
+*/
     public List<Asignatura> getAllAsignaturas() {
         return asignaturas;
     }
@@ -66,7 +66,6 @@ public class Instituto {
         return "Instituto{" +
                 "codigo=" + id +
                 ", denominacion='" + denominacion + '\'' +
-                ", docentes=" + docentes +
                 ", asignaturas=" + asignaturas +
                 '}';
     }

@@ -11,9 +11,21 @@ public class Main {
         try{
             
             dao.beginTransaction();
+            //Instituto instituto = new Instituto("Instituto Terciario");
+            //dao.insertInstituto(instituto);
             
-            dao.quitarAsignaturaADocente(2, 2);
+            //Buscar objeto instituto
+            //Instituto i = dao.buscarInstituto(1);
             
+            //Asignatura asig = new Asignatura("Programación Lógica I", "Diagramas de flujo y pseudocodigo");
+            //asig.setInstituto(i);
+            //dao.insertAsignatura(asig);
+            
+            
+            Docente docente = new Docente("ABC-88", "Alfredo", "Nuñez", "80");
+            //docente.setInstituto(i);
+            //docente.agregarAsignatura(asig);
+            dao.insertDocente(docente);
          
             dao.commitTransaction();
         }
