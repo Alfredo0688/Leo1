@@ -94,6 +94,11 @@ public class DAO {
            return instituto;
     }
        
+    public Docente buscarDocente(Integer id) throws Exception{
+           Docente docente = em.find(Docente.class, id);
+           return docente;
+    }
+       
     public void agregarAsignaturaADocente(int docenteId, int asignaturaId) throws Exception {
         Docente docente = em.find(Docente.class, docenteId);
         Asignatura asignatura = em.find(Asignatura.class, asignaturaId);

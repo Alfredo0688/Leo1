@@ -44,19 +44,21 @@ public class Instituto {
     public String getDenominacion(){
         return this.denominacion;
     }
-/*
+
     public void agregarDocente(Docente docente) {
         this.docentes.add(docente);
+        docente.setInstituto(this); //establecemos la bidireccionalidad
     }
-*/
+
     public void agregarAsignatura(Asignatura asignatura) {
         this.asignaturas.add(asignatura);
+        asignatura.setInstituto(this); //establecemos la bidireccionalidad
     }
-/*
+
     public List<Docente> getAllDocentes() {
         return docentes;
     }
-*/
+
     public List<Asignatura> getAllAsignaturas() {
         return asignaturas;
     }

@@ -11,21 +11,17 @@ public class Main {
         try{
             
             dao.beginTransaction();
-            //Instituto instituto = new Instituto("Instituto Terciario");
-            //dao.insertInstituto(instituto);
             
-            //Buscar objeto instituto
-            //Instituto i = dao.buscarInstituto(1);
+            //Busqueda de instituto
+            Instituto instituto = dao.buscarInstituto(1);
             
-            //Asignatura asig = new Asignatura("Programación Lógica I", "Diagramas de flujo y pseudocodigo");
-            //asig.setInstituto(i);
-            //dao.insertAsignatura(asig);
+            //ver los docentes del instituto
+            
+            Docente docente = instituto.getAllDocentes().get(0);
             
             
-            Docente docente = new Docente("ABC-88", "Alfredo", "Nuñez", "80");
-            //docente.setInstituto(i);
-            //docente.agregarAsignatura(asig);
-            dao.insertDocente(docente);
+            System.out.println("El nombre del unico docente en instituto es : " + docente.getNombre() );
+            
          
             dao.commitTransaction();
         }
