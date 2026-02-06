@@ -45,12 +45,12 @@ public class Instituto {
         return this.denominacion;
     }
 
-    public void agregarDocente(Docente docente) {
+    public void addDocente(Docente docente) {
         this.docentes.add(docente);
         docente.setInstituto(this); //establecemos la bidireccionalidad
     }
 
-    public void agregarAsignatura(Asignatura asignatura) {
+    public void addAsignatura(Asignatura asignatura) {
         this.asignaturas.add(asignatura);
         asignatura.setInstituto(this); //establecemos la bidireccionalidad
     }
@@ -68,7 +68,8 @@ public class Instituto {
         return "Instituto{" +
                 "codigo=" + id +
                 ", denominacion='" + denominacion + '\'' +
-                ", asignaturas=" + asignaturas +
+                ", Cantidad de asignaturas=" + asignaturas.size() +
+                ", Cantidad de docentes=" + docentes.size() + 
                 '}';
     }
 }
