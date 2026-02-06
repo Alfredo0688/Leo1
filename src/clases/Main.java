@@ -6,14 +6,14 @@ public class Main {
 
     public static void main(String[] args) {
         
-        Docente docente = new Docente("AE8","Pepe","Gonzales");
-        
+        Docente docente = new Docente();
+        docente.setApellido("Lopez");
         Asignatura asignatura = new Asignatura("Programación 1", "Lógica y pseudocodigos");
         
         Instituto instituto = new Instituto("Instituto de educación secundaria");
         
-        docente.agregarAsignatura(asignatura);
-        instituto.agregarDocente(docente);
+        docente.addAsignaturas(asignatura);
+        instituto.addDocente(docente);
         
         
         //ver el nombre del docente en el instituto

@@ -5,23 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Instituto {
-    private Integer codigo;
+    private Integer id;
     private String denominacion;
-    private final List<Docente> docentes;
-    private final List<Asignatura> asignaturas;
+    private final List<Docente> docentes = new ArrayList<>();;
+    private final List<Asignatura> asignaturas = new ArrayList<>();;
 
     public Instituto() {
         this.denominacion = "";
-        this.docentes = new ArrayList<>();
-        this.asignaturas = new ArrayList<>();
     }
-    
-    
-    
+     
     public Instituto(String denominacion) {
         this.denominacion = denominacion;
-        this.docentes = new ArrayList<>();
-        this.asignaturas = new ArrayList<>();
+    }
+    public Integer getId(){
+        return this.id;
     }
     
     public void setDenominacion(String denominacion){
@@ -32,12 +29,14 @@ public class Instituto {
         return this.denominacion;
     }
 
-    public void agregarDocente(Docente docente) {
+    public void addDocente(Docente docente) {
         this.docentes.add(docente);
+        docente.setInstituto(this); //establecemos la bidireccionalidad
     }
 
-    public void agregarAsignatura(Asignatura asignatura) {
+    public void addAsignatura(Asignatura asignatura) {
         this.asignaturas.add(asignatura);
+        asignatura.setInstituto(this); //establecemos la bidireccionalidad
     }
 
     public List<Docente> getAllDocentes() {
@@ -51,10 +50,10 @@ public class Instituto {
     @Override
     public String toString() {
         return "Instituto{" +
-                "codigo=" + codigo +
+                "codigo=" + id +
                 ", denominacion='" + denominacion + '\'' +
-                ", docentes=" + docentes +
-                ", asignaturas=" + asignaturas +
+                ", Cantidad de asignaturas=" + asignaturas.size() +
+                ", Cantidad de docentes=" + docentes.size() + 
                 '}';
     }
 }
