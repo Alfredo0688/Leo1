@@ -108,7 +108,7 @@ public class DAO {
         }
 
         // Añadir (JPA manejará la tabla intermedia)
-        docente.agregarAsignatura(asignatura);
+        //docente.agregarAsignatura(asignatura);
 
         // Si es bidireccional:
         // asignatura.getDocentes().add(docente);
