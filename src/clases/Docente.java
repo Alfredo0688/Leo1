@@ -33,7 +33,7 @@ public class Docente {
         joinColumns = @JoinColumn(name = "docente_id"), //nombre campo en tabla intermedia
         inverseJoinColumns = @JoinColumn(name = "asignatura_id") // nombre campo en tabla intermedia
     )
-    private List<Asignatura> asignaturas = new ArrayList<>();;
+    private List<Asignatura> asignaturas = new ArrayList<>();
     
     @ManyToOne
     @JoinColumn(name = "instituto_id")
