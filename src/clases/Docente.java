@@ -146,11 +146,18 @@ public class Docente {
     public void setCargaHoraria(String carga_horaria) {
         this.carga_horaria = carga_horaria;
     }
-    /*
+    
+    
     public void quitarAsignatura(Asignatura asignatura){
-         asignaturas.removeIf(asig -> asig.getId().equals(asignatura.getId()));
+         
+        if (asignatura == null || asignatura.getId() == null) return;
+            for (int i = 0; i < asignaturas.size(); i++) {
+                if (asignaturas.get(i).getId().equals(asignatura.getId())) {
+                    asignaturas.remove(i);
+                    break;}
+            }
     }
-    */
+   
  
 
     @Override

@@ -106,7 +106,8 @@ public class DAO {
         if (docente == null || asignatura == null) {
             throw new Exception("Docente o Asignatura no encontrados");
         }
-
+        
+        docente.addAsignaturas(asignatura);
         // Añadir (JPA manejará la tabla intermedia)
         //docente.agregarAsignatura(asignatura);
 

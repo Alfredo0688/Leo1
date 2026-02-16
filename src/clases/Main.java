@@ -8,21 +8,21 @@ public class Main {
     
         //Instanciamos la clase DAO
         DAO dao = new DAO();
+        
+        
         try{
             
             dao.beginTransaction();
             
-            //Busqueda de instituto
-            Instituto instituto = dao.buscarInstituto(1);
+            Instituto i = dao.buscarInstituto(1);
             
-            //ver los docentes del instituto
+            Docente d = dao.buscarDocente(4);
             
-            Docente docente = instituto.getAllDocentes().get(0);
+            i.removeDocente(d);
             
+            //probar esto : docente solo está en un instituto, por lo que borrar todas sus asignaturas ligadas a ese instituto deberia ser valido 
+            d.getAllAsignaturas().clear();
             
-            System.out.println("El nombre del unico docente en instituto es : " + docente.getNombre() );
-            
-         
             dao.commitTransaction();
         }
         catch(Exception e){
