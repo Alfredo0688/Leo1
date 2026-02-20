@@ -77,11 +77,6 @@ public class Instituto {
 
     @Override
     public String toString() {
-        return "Instituto{" +
-                "codigo=" + id +
-                ", denominacion='" + denominacion + '\'' +
-                ", Cantidad de asignaturas=" + asignaturas.size() +
-                ", Cantidad de docentes=" + docentes.size() + 
-                '}';
+        return denominacion;
     }
 }

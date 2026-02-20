@@ -129,7 +129,10 @@ public class DAO {
     
     
     
-    
+    public List<Instituto> getAllInstitutos() throws Exception {
+    return em.createQuery("SELECT i FROM Instituto i", Instituto.class)
+             .getResultList();
+    }
     
     
     
