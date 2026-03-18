@@ -55,7 +55,7 @@ public class DAO {
     }
     
     public void deleteInstituto(Integer id) throws Exception{
-        
+        System.out.println("entró");
         Instituto instituto = em.find(Instituto.class, id);
         
         if (instituto == null){

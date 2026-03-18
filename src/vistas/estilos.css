@@ -9,3 +9,32 @@
 #AnchorPane #vbox_buscar_instituto {
     -fx-background-color:floralwhite;
 }
+
+#AnchorPane #vbox_alta_docente {
+    -fx-background-color:lightgreen;
+}
+
+#AnchorPane #vbox_editar_docente {
+    -fx-background-color:lightgreen;
+}
+
+
+#AnchorPane #vbox_alta_asignatura {
+    -fx-background-color:lightcoral;
+}
+
+#AnchorPane #vbox_editar_asignatura {
+    -fx-background-color:lightcoral;
+}
+
+#btn_agregar_asignatura_en_docente{
+    -fx-background-color:green;
+    -fx-text-fill:white;
+        
+}
+
+#btn_quitar_asignatura_en_docente{
+    -fx-background-color:red;
+    -fx-text-fill:white;
+        
+}

@@ -114,14 +114,6 @@ public class Docente {
         this.direccion_notificaciones = direccion_notificaciones;
     }
 
-    public String getCarga_horaria() {
-        return carga_horaria;
-    }
-
-    public void setCarga_horaria(String carga_horaria) {
-        this.carga_horaria = carga_horaria;
-    }
-
     public List<Asignatura> getAllAsignaturas() {
         return asignaturas;
     }

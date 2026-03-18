@@ -63,7 +63,7 @@ public class Asignatura {
 
     @Override
     public String toString() {
-        return "Asignatura{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
+        return nombre;
     }
     
     
