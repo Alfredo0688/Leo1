@@ -17,6 +17,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class PrincipalController implements Initializable {
@@ -32,6 +33,9 @@ public class PrincipalController implements Initializable {
     
     @FXML
     private Button btn_alta_instituto, btn_modificar_instituto; 
+    
+    @FXML
+    private Button btn_ingresar, btn_cerrar_edicion_asignatura, btn_cerrar_edicion_docente;
     
     @FXML
     private Button btn_agregar_asignatura_en_docente, btn_quitar_asignatura_en_docente;
@@ -104,9 +108,10 @@ public class PrincipalController implements Initializable {
     private TableColumn<Asignatura,Void> col_editar_asignatura, col_eliminar_asignatura;
     
     @FXML
-    private VBox bloque_alta_instituto, bloque_editar_instituto, bloque_alta_docente, bloque_editar_docente,bloque_alta_asignatura,bloque_editar_asignatura;
+    private VBox bloque_alta_instituto, bloque_editar_instituto, bloque_alta_docente, bloque_editar_docente,bloque_alta_asignatura,bloque_editar_asignatura,bloque_buscar_instituto;
     
-    
+    @FXML
+    private HBox bloque_instituto_elegido, bloque_mensaje_inicial;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -484,13 +489,8 @@ public class PrincipalController implements Initializable {
             
             cbb_add_asignatura_edicion.getItems().setAll(asignaturas_i);
             
-            //cbb_institutos_docente.getItems().setAll(institutos);
-            //cbb_institutos_asignatura.getItems().setAll(institutos);
-
-            // Opcional: seleccionar el primero por defecto
-            //if (!institutos.isEmpty()) {
-            //    cbb_institutos.getSelectionModel().selectFirst();
-            //}
+            txt_modif_contador_asignaturas.setText(String.valueOf(asignaturas.size()));
+            
         } catch (Exception e) {
             System.err.println("Error al cargar asignaturas: " + e.getMessage());
             e.printStackTrace(); // Solo para desarrollo
@@ -681,15 +681,16 @@ public class PrincipalController implements Initializable {
             docente.quitarAsignatura(asignatura);
             refrescarCbbAsignaturas();
             decrementarAsignaturaEnDocente(docente.getAllAsignaturas().size());
-        
+            
         }
     }
     
     private void decrementarAsignaturaEnDocente(int cantidad_asignaturas) {
         //casteamos el int a string para colocarlo en pantalla
-        if(cantidad_asignaturas != 0){
+        System.out.println("funcion decrementar, cantidad de asignaturas en docente :" + cantidad_asignaturas);
+        /*if(cantidad_asignaturas != 0){
             cantidad_asignaturas = cantidad_asignaturas - 1;
-        }
+        }*/
         txt_modif_contador_asignaturas.setText(String.valueOf(cantidad_asignaturas));
     }
     
@@ -698,7 +699,6 @@ public class PrincipalController implements Initializable {
     public void listarInstitutos(){
         //System.out.println("listar institutos");
         try{
-            tabla_institutos.setVisible(true);
             List<Instituto> institutos = obtenerTodosLosInstitutos();
             //Asignar la lista a la tabla
             tabla_institutos.getItems().setAll(institutos);
@@ -752,7 +752,6 @@ public class PrincipalController implements Initializable {
             dao.beginTransaction();
             instituto.setDenominacion(txt_denominacion_modif.getText());
             dao.commitTransaction();
-            bloque_alta_instituto.setVisible(true);
             bloque_editar_instituto.setVisible(false);
             listarInstitutos();
         }
@@ -839,4 +838,42 @@ public class PrincipalController implements Initializable {
         txt_descripcion_modif.setText(asignatura.getDescripcion());
     }
     
+    @FXML
+    public void ingresarAlSistema(){
+        
+        mostrarBloquesOcultos();
+        ocultarBloquesIniciales();
+    
+    }
+
+    private void mostrarBloquesOcultos() {
+        bloque_alta_docente.setVisible(true);
+        bloque_alta_asignatura.setVisible(true);
+        bloque_instituto_elegido.setVisible(true);
+        tabla_institutos.setVisible(true);
+        tabla_docentes.setVisible(true);
+        tabla_asignaturas.setVisible(true);
+    }
+
+    private void ocultarBloquesIniciales() {
+        bloque_mensaje_inicial.setVisible(false);
+        bloque_buscar_instituto.setVisible(false);
+        bloque_alta_instituto.setVisible(false);
+        btn_ingresar.setVisible(false);
+
+
+    }
+ 
+    
+    @FXML
+    public void cerrarEdicionAsignatura(){
+        bloque_alta_asignatura.setVisible(true);
+        bloque_editar_asignatura.setVisible(false);
+    }
+    
+    @FXML
+    public void cerrarEdicionDocente(){
+        bloque_alta_docente.setVisible(true);
+        bloque_editar_docente.setVisible(false);
+    }
 }

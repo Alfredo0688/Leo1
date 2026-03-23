@@ -1,13 +1,25 @@
 #AnchorPane{
-    -fx-background-color: blue;
+    -fx-background-color: #98D8C8;
 }
 
 #AnchorPane #vbox_alta_instituto {
-    -fx-background-color:floralwhite;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1;
 }
 
+#AnchorPane #vbox_editar_instituto {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1;
+}
+
+
 #AnchorPane #vbox_buscar_instituto {
-    -fx-background-color:floralwhite;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1;
+    
 }
 
 #AnchorPane #vbox_alta_docente {
@@ -37,4 +49,14 @@
     -fx-background-color:red;
     -fx-text-fill:white;
         
+}
+
+#btn_ingresar{
+    -fx-background-color: #4A90E2;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
 }

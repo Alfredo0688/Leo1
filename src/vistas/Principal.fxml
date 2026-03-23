@@ -15,12 +15,16 @@
 
 <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1240.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vistas.PrincipalController">
    <children>
-      <Label fx:id="lbl_denominación" layoutX="688.0" layoutY="29.0" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <VBox id="vbox_alta_instituto" fx:id="bloque_alta_instituto" alignment="CENTER" layoutX="469.0" layoutY="14.0" prefHeight="180.0" prefWidth="327.0">
+      <HBox fx:id="bloque_mensaje_inicial" alignment="CENTER" layoutX="49.0" layoutY="29.0" prefHeight="100.0" prefWidth="942.0">
+         <children>
+            <Label fx:id="lbl_denominación" prefHeight="58.0" prefWidth="337.0" text="Bienvenidos/as" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox id="vbox_alta_instituto" fx:id="bloque_alta_instituto" alignment="CENTER" layoutX="352.0" layoutY="326.0" prefHeight="168.0" prefWidth="418.0">
          <children>
             <Label text="Alta de Instituto">
                <font>
@@ -39,7 +43,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox id="vbox_buscar_instituto" alignment="CENTER" layoutX="63.0" layoutY="23.0" prefHeight="73.0" prefWidth="327.0">
+      <VBox id="vbox_buscar_instituto" fx:id="bloque_buscar_instituto" alignment="CENTER" layoutX="112.0" layoutY="235.0" prefHeight="58.0" prefWidth="817.0">
          <children>
             <HBox alignment="CENTER" prefHeight="43.0" prefWidth="495.0">
                <children>
@@ -49,7 +53,8 @@
             </HBox>
          </children>
       </VBox>
-      <VBox id="vbox_alta_docente" fx:id="bloque_alta_docente" alignment="TOP_CENTER" layoutX="14.0" layoutY="127.0" prefHeight="562.0" prefWidth="425.0">
+      <Button fx:id="btn_ingresar" layoutX="459.0" layoutY="603.0" mnemonicParsing="false" onAction="#ingresarAlSistema" prefHeight="54.0" prefWidth="172.0" text="Ingresar" />
+      <VBox id="vbox_alta_docente" fx:id="bloque_alta_docente" alignment="TOP_CENTER" layoutX="14.0" layoutY="127.0" prefHeight="562.0" prefWidth="425.0" visible="false">
          <children>
             <Pane prefHeight="39.0" prefWidth="327.0">
                <children>
@@ -135,83 +140,16 @@
                </children>
             </HBox>
          </children></VBox>
-      <VBox id="vbox_alta_asignatura" fx:id="bloque_alta_asignatura" layoutX="842.0" layoutY="14.0" prefHeight="180.0" prefWidth="327.0">
+      <HBox fx:id="bloque_instituto_elegido" layoutX="441.0" layoutY="7.0" prefHeight="45.0" prefWidth="445.0" visible="false">
          <children>
-            <Pane prefHeight="60.0" prefWidth="327.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="9.0" prefHeight="17.0" prefWidth="242.0" text="Alta de asignatura">
-                     <font>
-                        <Font name="Comic Sans MS" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="327.0">
-               <children>
-                  <Label prefHeight="17.0" prefWidth="80.0" text="Nombre" />
-                  <Separator orientation="VERTICAL" prefHeight="55.0" prefWidth="30.0" />
-                  <TextField fx:id="txt_nombre_asignatura" prefHeight="25.0" prefWidth="168.0" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="327.0">
-               <children>
-                  <Label prefHeight="17.0" prefWidth="80.0" text="Descripción" />
-                  <Separator orientation="VERTICAL" prefHeight="55.0" prefWidth="30.0" />
-                  <TextField fx:id="txt_descripcion" prefHeight="25.0" prefWidth="168.0" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="327.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#agregarAsignatura" prefHeight="25.0" prefWidth="128.0" text="Agregar" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <HBox layoutX="476.0" layoutY="19.0" prefHeight="45.0" prefWidth="731.0" visible="false">
-         <children>
-            <Label alignment="CENTER" prefHeight="45.0" prefWidth="371.0" text="Instituto seleccionado :" textAlignment="JUSTIFY" textFill="WHITE">
+            <Label fx:id="txt_instituto_seleccionado" prefHeight="45.0" prefWidth="745.0" text="Ninguno" textAlignment="JUSTIFY">
                <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="txt_instituto_seleccionado" alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="371.0" text="Ninguno" textAlignment="JUSTIFY" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <TableView fx:id="tabla_institutos" layoutX="611.0" layoutY="204.0" prefHeight="106.0" prefWidth="462.0">
-        <columns>
-          <TableColumn fx:id="col_denominacion" prefWidth="120.0" text="Denominación" />
-          <TableColumn fx:id="columna_accion" prefWidth="109.0" style="-fx-alignment: CENTER;" text="Acción" />
-            <TableColumn fx:id="col_editar_instituto" prefWidth="118.0" style="-fx-alignment: CENTER;" text="Editar" />
-            <TableColumn fx:id="col_eliminar_instituto" prefWidth="116.0" style="-fx-alignment: CENTER;" text="Eliminar" />
-        </columns>
-      </TableView>
-      <TableView fx:id="tabla_docentes" layoutX="454.0" layoutY="326.0" prefHeight="200.0" prefWidth="756.0">
-         <columns>
-            <TableColumn fx:id="col_legajo" prefWidth="75.0" text="Legajo" />
-            <TableColumn fx:id="col_documento" prefWidth="75.0" text="Documento" />
-            <TableColumn fx:id="col_nombre_docente" prefWidth="75.0" text="Nombre" />
-            <TableColumn fx:id="col_apellido" prefWidth="75.0" text="Apellido" />
-            <TableColumn fx:id="col_fecha_nacimiento" prefWidth="75.0" text="Fecha de nacimiento" />
-            <TableColumn fx:id="col_dir_notificaciones" prefWidth="75.0" text="Direccion de notificaciones" />
-            <TableColumn fx:id="col_carga_horaria" prefWidth="75.0" text="Carga horaria" />
-            <TableColumn fx:id="col_ver_asignaturas" prefWidth="75.0" text="Asignaturas impartidas" />
-            <TableColumn fx:id="col_editar_docente" prefWidth="75.0" text="Editar" />
-            <TableColumn fx:id="col_eliminar_docente" prefWidth="75.0" text="Eliminar" />
-         </columns>
-      </TableView>
-      <TableView fx:id="tabla_asignaturas" layoutX="520.0" layoutY="545.0" prefHeight="144.0" prefWidth="711.0">
-         <columns>
-            <TableColumn fx:id="col_nombre_asignatura" prefWidth="149.0" text="Nombre" />
-            <TableColumn fx:id="col_descripcion" minWidth="0.0" prefWidth="303.0" text="Descripcion" />
-            <TableColumn fx:id="col_editar_asignatura" onEditStart="#modificarAsignatura" prefWidth="128.0" text="Editar" />
-            <TableColumn fx:id="col_eliminar_asignatura" prefWidth="130.0" text="Eliminar" />
-         </columns>
-      </TableView>
-      <VBox id="vbox_alta_instituto" fx:id="bloque_editar_instituto" alignment="CENTER" layoutX="470.0" layoutY="14.0" prefHeight="180.0" prefWidth="327.0" visible="false">
+      <VBox id="vbox_editar_instituto" fx:id="bloque_editar_instituto" alignment="CENTER" layoutX="492.0" layoutY="63.0" prefHeight="180.0" prefWidth="327.0" visible="false">
          <children>
             <Label text="Editar Instituto">
                <font>
@@ -231,7 +169,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox id="vbox_editar_docente" fx:id="bloque_editar_docente" alignment="TOP_CENTER" layoutX="14.0" layoutY="29.0" prefHeight="677.0" prefWidth="425.0" visible="false">
+      <VBox id="vbox_editar_docente" fx:id="bloque_editar_docente" alignment="TOP_CENTER" layoutX="14.0" layoutY="40.0" prefHeight="677.0" prefWidth="425.0" visible="false">
          <children>
             <Pane prefHeight="39.0" prefWidth="327.0">
                <children>
@@ -333,12 +271,46 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="55.0" prefWidth="327.0">
                <children>
+                  <Button fx:id="btn_cerrar_edicion_docente" mnemonicParsing="false" onAction="#cerrarEdicionDocente" prefHeight="25.0" prefWidth="127.0" text="Cerrar" />
+                  <Pane prefHeight="54.0" prefWidth="91.0" />
                   <Button mnemonicParsing="false" onAction="#modificarDocente" prefHeight="25.0" prefWidth="147.0" text="Editar Docente" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <VBox id="vbox_editar_asignatura" fx:id="bloque_editar_asignatura" layoutX="842.0" layoutY="14.0" prefHeight="180.0" prefWidth="327.0" visible="false">
+      <VBox id="vbox_alta_asignatura" fx:id="bloque_alta_asignatura" layoutX="866.0" layoutY="63.0" prefHeight="180.0" prefWidth="327.0" visible="false">
+         <children>
+            <Pane prefHeight="60.0" prefWidth="327.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="9.0" prefHeight="17.0" prefWidth="242.0" text="Alta de asignatura">
+                     <font>
+                        <Font name="Comic Sans MS" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="327.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="80.0" text="Nombre" />
+                  <Separator orientation="VERTICAL" prefHeight="55.0" prefWidth="30.0" />
+                  <TextField fx:id="txt_nombre_asignatura" prefHeight="25.0" prefWidth="168.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="327.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="80.0" text="Descripción" />
+                  <Separator orientation="VERTICAL" prefHeight="55.0" prefWidth="30.0" />
+                  <TextField fx:id="txt_descripcion" prefHeight="25.0" prefWidth="168.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="327.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#agregarAsignatura" prefHeight="25.0" prefWidth="128.0" text="Agregar" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox id="vbox_editar_asignatura" fx:id="bloque_editar_asignatura" layoutX="866.0" layoutY="63.0" prefHeight="180.0" prefWidth="327.0" visible="false">
          <children>
             <Pane prefHeight="60.0" prefWidth="327.0">
                <children>
@@ -365,10 +337,42 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="55.0" prefWidth="327.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#modificarAsignatura" prefHeight="25.0" prefWidth="128.0" text="Editar" />
+                  <Button fx:id="btn_cerrar_edicion_asignatura" mnemonicParsing="false" onAction="#cerrarEdicionAsignatura" prefHeight="25.0" prefWidth="94.0" text="Cerrar" />
+                  <Pane prefHeight="44.0" prefWidth="91.0" />
+                  <Button mnemonicParsing="false" onAction="#modificarAsignatura" prefHeight="25.0" prefWidth="103.0" text="Editar" />
                </children>
             </HBox>
          </children>
       </VBox>
+      <TableView fx:id="tabla_institutos" layoutX="607.0" layoutY="251.0" prefHeight="106.0" prefWidth="462.0" visible="false">
+        <columns>
+          <TableColumn fx:id="col_denominacion" prefWidth="120.0" text="Denominación" />
+          <TableColumn fx:id="columna_accion" prefWidth="109.0" style="-fx-alignment: CENTER;" text="Acción" />
+            <TableColumn fx:id="col_editar_instituto" prefWidth="118.0" style="-fx-alignment: CENTER;" text="Editar" />
+            <TableColumn fx:id="col_eliminar_instituto" prefWidth="116.0" style="-fx-alignment: CENTER;" text="Eliminar" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tabla_docentes" layoutX="459.0" layoutY="360.0" prefHeight="200.0" prefWidth="756.0" visible="false">
+         <columns>
+            <TableColumn fx:id="col_legajo" prefWidth="75.0" text="Legajo" />
+            <TableColumn fx:id="col_documento" prefWidth="75.0" text="Documento" />
+            <TableColumn fx:id="col_nombre_docente" prefWidth="75.0" text="Nombre" />
+            <TableColumn fx:id="col_apellido" prefWidth="75.0" text="Apellido" />
+            <TableColumn fx:id="col_fecha_nacimiento" prefWidth="75.0" text="Fecha de nacimiento" />
+            <TableColumn fx:id="col_dir_notificaciones" prefWidth="75.0" text="Direccion de notificaciones" />
+            <TableColumn fx:id="col_carga_horaria" prefWidth="75.0" text="Carga horaria" />
+            <TableColumn fx:id="col_ver_asignaturas" prefWidth="75.0" text="Asignaturas impartidas" />
+            <TableColumn fx:id="col_editar_docente" prefWidth="75.0" text="Editar" />
+            <TableColumn fx:id="col_eliminar_docente" prefWidth="75.0" text="Eliminar" />
+         </columns>
+      </TableView>
+      <TableView fx:id="tabla_asignaturas" layoutX="482.0" layoutY="574.0" prefHeight="132.0" prefWidth="711.0" visible="false">
+         <columns>
+            <TableColumn fx:id="col_nombre_asignatura" prefWidth="149.0" text="Nombre" />
+            <TableColumn fx:id="col_descripcion" minWidth="0.0" prefWidth="303.0" text="Descripcion" />
+            <TableColumn fx:id="col_editar_asignatura" onEditStart="#modificarAsignatura" prefWidth="128.0" text="Editar" />
+            <TableColumn fx:id="col_eliminar_asignatura" prefWidth="130.0" text="Eliminar" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>
