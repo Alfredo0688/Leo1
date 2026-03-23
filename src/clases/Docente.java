@@ -23,9 +23,9 @@ public class Docente {
     private String documento;
     private String nombre;
     private String apellido;
-    private String fecha_nacimiento;
-    private String direccion_notificaciones;
-    private String carga_horaria; // Antes era CargoDocente
+    private String fechaNacimiento;
+    private String direccionNotificaciones;
+    private String cargaHoraria; // Antes era CargoDocente
     @ManyToMany
     @JoinTable(
         //creacion tabla intermedia
@@ -44,20 +44,20 @@ public class Docente {
         this.documento = "";
         this.nombre = "";
         this.apellido = "";
-        this.fecha_nacimiento = "";
-        this.direccion_notificaciones = "";
-        this.carga_horaria = "";
+        this.fechaNacimiento = "";
+        this.direccionNotificaciones = "";
+        this.cargaHoraria = "";
     }
     
     
-    public Docente(String legajo,String documento, String nombre, String apellido, String fecha_nacimiento, String direccion_notificaciones, String carga_horaria) {
+    public Docente(String legajo,String documento, String nombre, String apellido, String fechaNacimiento, String direccionNotificaciones, String cargaHoraria) {
         this.legajo = legajo;
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.direccion_notificaciones = direccion_notificaciones;
-        this.carga_horaria = carga_horaria;
+        this.fechaNacimiento = fechaNacimiento;
+        this.direccionNotificaciones = direccionNotificaciones;
+        this.cargaHoraria = cargaHoraria;
     }
     public Integer getId() {
         return id;
@@ -98,28 +98,28 @@ public class Docente {
         this.documento = documento;
     }
 
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getDireccion_notificaciones() {
-        return direccion_notificaciones;
+    public String getDireccionNotificaciones() {
+        return direccionNotificaciones;
     }
 
-    public void setDireccion_notificaciones(String direccion_notificaciones) {
-        this.direccion_notificaciones = direccion_notificaciones;
+    public void setDireccionNotificaciones(String direccionNotificaciones) {
+        this.direccionNotificaciones = direccionNotificaciones;
     }
 
-    public String getCarga_horaria() {
-        return carga_horaria;
+    public String getCargaHoraria() {
+        return cargaHoraria;
     }
 
-    public void setCarga_horaria(String carga_horaria) {
-        this.carga_horaria = carga_horaria;
+    public void setCargaHoraria(String cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
     }
 
     public List<Asignatura> getAllAsignaturas() {
@@ -137,16 +137,6 @@ public class Docente {
     public void setInstituto(Instituto instituto) {
         this.instituto = instituto;
     }
-
-    
-    public String getCargaHoraria() {
-        return carga_horaria;
-    }
-
-    public void setCargaHoraria(String carga_horaria) {
-        this.carga_horaria = carga_horaria;
-    }
-    
     
     public void quitarAsignatura(Asignatura asignatura){
          
@@ -167,7 +157,7 @@ public class Docente {
                 ", legajo='" + legajo + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
-                ", cargaHoraria='" + carga_horaria + '\'' +
+                ", cargaHoraria='" + cargaHoraria + '\'' +
                 ", asignaturas=" + asignaturas +
                 '}';
     }

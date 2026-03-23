@@ -6,7 +6,7 @@
     <class>clases.Instituto</class>
     <class>clases.Docente</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/tuti2"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/db_version_2"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="psql"/>

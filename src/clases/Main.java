@@ -14,14 +14,9 @@ public class Main {
             
             dao.beginTransaction();
             
-            Instituto i = dao.buscarInstituto(1);
+            Instituto i = new Instituto("Primario");
             
-            Docente d = dao.buscarDocente(4);
-            
-            i.removeDocente(d);
-            
-            //probar esto : docente solo está en un instituto, por lo que borrar todas sus asignaturas ligadas a ese instituto deberia ser valido 
-            d.getAllAsignaturas().clear();
+            dao.agregarInstituto(i);
             
             dao.commitTransaction();
         }
