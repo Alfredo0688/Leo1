@@ -32,35 +32,35 @@ public class PrincipalController implements Initializable {
     Instituto instituto;
     
     @FXML
-    private Button btn_alta_instituto, btn_modificar_instituto; 
+    private Button btnAgregarInstituto, btnModificarInstituto; 
     
     @FXML
-    private Button btn_ingresar, btn_cerrar_edicion_asignatura, btn_cerrar_edicion_docente;
+    private Button btnIngresar, btnCerrarEdicionAsignatura, btnCerrarEdicionDocente;
     
     @FXML
-    private Button btn_agregar_asignatura_en_docente, btn_quitar_asignatura_en_docente;
+    private Button btnAgregarAsignaturaEnDocente, btnQuitarAsignaturaEnDocente;
     //campos asignatura
     @FXML
-    private TextField txt_nombre_asignatura, txt_descripcion, txt_nombre_asignatura_modif, txt_descripcion_modif; 
+    private TextField txtNombreAsignatura, txtDescripcion, txtNombreAsignaturaModif, txtDescripcionModif; 
     //campo instituto
     @FXML
-    private TextField txt_denominacion,txt_denominacion_modif;
+    private TextField txtDenominacion,txtDenominacionModif;
     
     
     
-    @FXML private TextField txt_legajo, txt_documento,txt_nombre_docente,txt_apellido_docente,txt_fecha_nacimiento,txt_dir_notificaciones,txt_carga_horaria,txt_contador_asignaturas;
+    @FXML private TextField txtLegajo, txtDocumento,txtNombreDocente,txtApellidoDocente,txtFechaNacimiento,txtDirNotificaciones,txtCargaHoraria,txtContadorAsignaturas;
     
-    @FXML private TextField txt_modif_legajo, txt_modif_documento,txt_nombre_modif_docente,txt_apellido_modif_docente,txt_modif_fecha_nacimiento,txt_modif_dir_notificaciones,txt_modif_carga_horaria,txt_modif_contador_asignaturas;
+    @FXML private TextField txtModifLegajo, txtModifDocumento,txtNombreModifDocente,txtApellidoModifDocente,txtModifFechaNacimiento,txtModifDirNotificaciones,txtModifCargaHoraria,txtModifContadorAsignaturas;
     
     
     @FXML 
-    private Label txt_instituto_seleccionado;
+    private Label txtInstitutoSeleccionado;
     
     @FXML
-    ComboBox<Instituto> cbb_institutos;
+    ComboBox<Instituto> cbbInstitutos;
     
     @FXML 
-    ComboBox<Asignatura> cbb_asignaturas_en_docente_alta,cbb_asignaturas_en_docente_modif, cbb_add_asignatura, cbb_quitar_asignatura,cbb_add_asignatura_edicion;
+    ComboBox<Asignatura> cbbAsignaturasEnDocenteAlta,cbbAsignaturasEnDocenteModif, cbb_add_asignatura, cbbQuitarAsignatura,cbbAddAsignaturaEdicion;
     
     //@FXML
     //ComboBox<Instituto> cbb_institutos_docente;
@@ -69,49 +69,49 @@ public class PrincipalController implements Initializable {
     //ComboBox<Instituto> cbb_institutos_asignatura;
     
     @FXML
-    private TableView<Instituto> tabla_institutos;
+    private TableView<Instituto> tablaInstitutos;
 
     @FXML
-    private TableColumn<Instituto, String> col_denominacion;  // una sola columna
+    private TableColumn<Instituto, String> colDenominacion;  // una sola columna
     
     @FXML
-    private TableColumn<Instituto,Void> columna_accion;
+    private TableColumn<Instituto,Void> columnaAccion;
     
     @FXML
-    private TableColumn<Instituto,Void> col_editar_instituto;
+    private TableColumn<Instituto,Void> colEditarInstituto;
     
     @FXML
-    private TableColumn<Instituto,Void> col_eliminar_instituto;
+    private TableColumn<Instituto,Void> colEliminarInstituto;
     
     //lista docente
     @FXML
-    private TableView<Docente> tabla_docentes;
+    private TableView<Docente> tablaDocentes;
     
     @FXML
-    private TableColumn<Docente, String> col_legajo, col_documento, col_nombre_docente, col_apellido,col_fecha_nacimiento,col_dir_notificaciones,col_carga_horaria;
+    private TableColumn<Docente, String> colLegajo, colDocumento, colNombreDocente, colApellido,colFechaNacimiento,colDirNotificaciones,colCargaHoraria;
     
     @FXML
-    private TableColumn<Docente,Void> col_ver_asignaturas;
+    private TableColumn<Docente,Void> colVerAsignaturas;
     
     @FXML
-    private TableColumn<Docente,Void> col_editar_docente, col_eliminar_docente;
+    private TableColumn<Docente,Void> colEditarDocente, colEliminarDocente;
     
     
     //lista asignatura
     @FXML
-    private TableView<Asignatura> tabla_asignaturas;
+    private TableView<Asignatura> tablaAsignaturas;
     
     @FXML
-    private TableColumn<Asignatura, String> col_nombre_asignatura, col_descripcion;
+    private TableColumn<Asignatura, String> colNombreAsignatura, colDescripcion;
     
     @FXML
-    private TableColumn<Asignatura,Void> col_editar_asignatura, col_eliminar_asignatura;
+    private TableColumn<Asignatura,Void> colEditarAsignatura, colEliminarAsignatura;
     
     @FXML
-    private VBox bloque_alta_instituto, bloque_editar_instituto, bloque_alta_docente, bloque_editar_docente,bloque_alta_asignatura,bloque_editar_asignatura,bloque_buscar_instituto;
+    private VBox bloqueAltaInstituto, bloqueEditarInstituto, bloqueAltaDocente, bloqueEditarDocente,bloqueAltaAsignatura,bloqueEditarAsignatura,bloqueBuscarInstituto;
     
     @FXML
-    private HBox bloque_instituto_elegido, bloque_mensaje_inicial;
+    private HBox bloqueInstitutoElegido, bloqueMensajeInicial;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -121,8 +121,8 @@ public class PrincipalController implements Initializable {
         listarInstitutos();
         //System.out.println("hola");
         cargarComboBoxInstitutos();
-        txt_contador_asignaturas.setText("0");
-        txt_modif_contador_asignaturas.setText("0");
+        txtContadorAsignaturas.setText("0");
+        txtModifContadorAsignaturas.setText("0");
     }    
     
     
@@ -131,14 +131,14 @@ public class PrincipalController implements Initializable {
         //Configurar las columnas(se hace una sola vez)
         
         //Guardiola acá, el callback recien se ejecuta cuando la lista es cargada(en el setAll)
-        col_denominacion.setCellValueFactory(cellData -> {
+        colDenominacion.setCellValueFactory(cellData -> {
                 // cellData.getValue() devuelve un objeto Instituto
                 String denominacion = cellData.getValue().getDenominacion();
                 //System.out.println(denominacion);
                 return new SimpleStringProperty(denominacion);
             });
         
-        columna_accion.setCellFactory(param -> new TableCell<Instituto, Void>() {
+        columnaAccion.setCellFactory(param -> new TableCell<Instituto, Void>() {
             private final Button btnVer = new Button("Ver Docentes");
 
             {
@@ -161,7 +161,7 @@ public class PrincipalController implements Initializable {
         });
         
     
-        col_editar_instituto.setCellFactory(param -> new TableCell<Instituto, Void>() {
+        colEditarInstituto.setCellFactory(param -> new TableCell<Instituto, Void>() {
             private final Button btnVer = new Button("Editar");
 
             {
@@ -184,7 +184,7 @@ public class PrincipalController implements Initializable {
         }
         });
         
-        col_eliminar_instituto.setCellFactory(param -> new TableCell<Instituto, Void>() {
+        colEliminarInstituto.setCellFactory(param -> new TableCell<Instituto, Void>() {
             private final Button btnVer = new Button("Eliminar");
 
             {
@@ -212,50 +212,50 @@ public class PrincipalController implements Initializable {
   
     private void configurarCamposTablaDocente(){
         
-        col_legajo.setCellValueFactory(cellData -> {
+        colLegajo.setCellValueFactory(cellData -> {
             // cellData.getValue() devuelve un objeto Instituto
             String legajo = cellData.getValue().getLegajo();
             System.out.println(legajo);
             return new SimpleStringProperty(legajo);
         });
-        col_documento.setCellValueFactory(cellData -> {
+        colDocumento.setCellValueFactory(cellData -> {
             // cellData.getValue() devuelve un objeto Instituto
             String documento = cellData.getValue().getDocumento();
             System.out.println(documento);
             return new SimpleStringProperty(documento);
         });
-        col_nombre_docente.setCellValueFactory(cellData -> {
+        colNombreDocente.setCellValueFactory(cellData -> {
             // cellData.getValue() devuelve un objeto Instituto
             String nombre_docente = cellData.getValue().getNombre();
             System.out.println(nombre_docente);
             return new SimpleStringProperty(nombre_docente);
         });
-        col_apellido.setCellValueFactory(cellData -> {
+        colApellido.setCellValueFactory(cellData -> {
             // cellData.getValue() devuelve un objeto Instituto
             String apellido_docente = cellData.getValue().getApellido();
             System.out.println(apellido_docente);
             return new SimpleStringProperty(apellido_docente);
         });
-        col_fecha_nacimiento.setCellValueFactory(cellData -> {
+        colFechaNacimiento.setCellValueFactory(cellData -> {
             // cellData.getValue() devuelve un objeto Instituto
-            String fecha_nacimiento = cellData.getValue().getFecha_nacimiento();
+            String fecha_nacimiento = cellData.getValue().getFechaNacimiento();
             System.out.println(fecha_nacimiento);
             return new SimpleStringProperty(fecha_nacimiento);
         });
-        col_dir_notificaciones.setCellValueFactory(cellData -> {
+        colDirNotificaciones.setCellValueFactory(cellData -> {
             // cellData.getValue() devuelve un objeto Instituto
-            String direccion_notificaciones = cellData.getValue().getDireccion_notificaciones();
+            String direccion_notificaciones = cellData.getValue().getDireccionNotificaciones();
             System.out.println(direccion_notificaciones);
             return new SimpleStringProperty(direccion_notificaciones);
         });
-        col_carga_horaria.setCellValueFactory(cellData -> {
+        colCargaHoraria.setCellValueFactory(cellData -> {
             // cellData.getValue() devuelve un objeto Instituto
             String carga_horaria = cellData.getValue().getCargaHoraria();
             System.out.println(carga_horaria);
             return new SimpleStringProperty(carga_horaria);
         });
     
-        col_ver_asignaturas.setCellFactory(param -> new TableCell<Docente, Void>() {
+        colVerAsignaturas.setCellFactory(param -> new TableCell<Docente, Void>() {
             private final Button btnVer = new Button("Ver Asignaturas");
 
             {
@@ -263,7 +263,7 @@ public class PrincipalController implements Initializable {
                 btnVer.setOnAction(event -> {
                     Docente docente = getTableView().getItems().get(getIndex());
                     
-                    System.out.println("Asignaturas del docente: " + docente.getApellido() + "N°: " + docente.getAllAsignaturas().size());
+                    System.out.println("Asignaturas del docente: " + docente.getApellido() + "N°: " + docente.obtenerTodasAsignaturas().size());
                     
                     // Acá se invoca la carga de asignaturas basadas en el docente seleccionado
                     listarAsignaturas(docente);
@@ -278,7 +278,7 @@ public class PrincipalController implements Initializable {
         });
         
     
-        col_editar_docente.setCellFactory(param -> new TableCell<Docente, Void>() {
+        colEditarDocente.setCellFactory(param -> new TableCell<Docente, Void>() {
             private final Button btnVer = new Button("Editar");
 
             {
@@ -299,7 +299,7 @@ public class PrincipalController implements Initializable {
             }
         });
         
-        col_eliminar_docente.setCellFactory(param -> new TableCell<Docente, Void>() {
+        colEliminarDocente.setCellFactory(param -> new TableCell<Docente, Void>() {
             private final Button btnVer = new Button("Eliminar");
 
             {
@@ -321,20 +321,20 @@ public class PrincipalController implements Initializable {
     }
     
     private void configurarCamposAsignatura(){
-        col_nombre_asignatura.setCellValueFactory(cellData -> {
+        colNombreAsignatura.setCellValueFactory(cellData -> {
             // cellData.getValue() devuelve un objeto Instituto
             String nombre_asignatura = cellData.getValue().getNombre();
             System.out.println(nombre_asignatura);
             return new SimpleStringProperty(nombre_asignatura);
         });
-        col_descripcion.setCellValueFactory(cellData -> {
+        colDescripcion.setCellValueFactory(cellData -> {
             // cellData.getValue() devuelve un objeto Instituto
             String descripcion = cellData.getValue().getDescripcion();
             System.out.println(descripcion);
             return new SimpleStringProperty(descripcion);
         });
         
-        col_editar_asignatura.setCellFactory(param -> new TableCell<Asignatura, Void>() {
+        colEditarAsignatura.setCellFactory(param -> new TableCell<Asignatura, Void>() {
             private final Button btnVer = new Button("Editar");
 
             {
@@ -354,7 +354,7 @@ public class PrincipalController implements Initializable {
             }
         });
         
-        col_eliminar_asignatura.setCellFactory(param -> new TableCell<Asignatura, Void>() {
+        colEliminarAsignatura.setCellFactory(param -> new TableCell<Asignatura, Void>() {
             private final Button btnVer = new Button("Eliminar");
 
             {
@@ -379,7 +379,7 @@ public class PrincipalController implements Initializable {
         try {
             dao.beginTransaction();
 
-            String denominacion = txt_denominacion.getText();
+            String denominacion = txtDenominacion.getText();
             System.out.println("denominación :" + denominacion);
 
             Instituto i = new Instituto(denominacion);
@@ -387,7 +387,7 @@ public class PrincipalController implements Initializable {
 
             //System.out.println("apretá y ganá");
 
-            dao.insertInstituto(i);
+            dao.agregarInstituto(i);
             cargarComboBoxInstitutos();
             listarInstitutos();
             dao.commitTransaction();
@@ -407,9 +407,9 @@ public class PrincipalController implements Initializable {
     @FXML
     public void abrirInterfazEdicionInstituto(Instituto instituto){
         try{
-            bloque_alta_instituto.setVisible(false);
-            bloque_editar_instituto.setVisible(true);
-            txt_denominacion_modif.setText(instituto.getDenominacion());
+            bloqueAltaInstituto.setVisible(false);
+            bloqueEditarInstituto.setVisible(true);
+            txtDenominacionModif.setText(instituto.getDenominacion());
         }
         
         catch(Exception e){
@@ -423,7 +423,7 @@ public class PrincipalController implements Initializable {
     
     private List<Instituto> obtenerTodosLosInstitutos(){
         try {
-            return dao.getAllInstitutos();
+            return dao.obtenerTodosInstitutos();
         }
         catch (Exception e) {
             System.err.println("Error al cargar institutos: " + e.getMessage());
@@ -437,7 +437,7 @@ public class PrincipalController implements Initializable {
         try {
             //List<Instituto> institutos = dao.getAllInstitutos();
             System.out.println("Cantidad institutos en el sistema : " + obtenerTodosLosInstitutos().size());
-            cbb_institutos.getItems().setAll(obtenerTodosLosInstitutos());
+            cbbInstitutos.getItems().setAll(obtenerTodosLosInstitutos());
             
             //cbb_institutos_docente.getItems().setAll(institutos);
             //cbb_institutos_asignatura.getItems().setAll(institutos);
@@ -454,9 +454,9 @@ public class PrincipalController implements Initializable {
     
     private void cargarComboBoxAsignaturasAlta() {
         try {
-            List<Asignatura> asignaturas = instituto.getAllAsignaturas();
+            List<Asignatura> asignaturas = instituto.obtenerTodasAsignaturas();
             System.out.println("asignaturas : " + asignaturas.size());
-            cbb_asignaturas_en_docente_alta.getItems().setAll(asignaturas);
+            cbbAsignaturasEnDocenteAlta.getItems().setAll(asignaturas);
             //cbb_institutos_docente.getItems().setAll(institutos);
             //cbb_institutos_asignatura.getItems().setAll(institutos);
 
@@ -473,23 +473,23 @@ public class PrincipalController implements Initializable {
     private void cargarComboBoxAsignaturasEdicion(Docente docente) {
         try {
             //obtengo las asignaturas del docente elegido en edición
-            List<Asignatura> asignaturas = docente.getAllAsignaturas();
+            List<Asignatura> asignaturas = docente.obtenerTodasAsignaturas();
             
             System.out.println("asignaturas : " + asignaturas.size());
             
             
             //cargamos el cbb de las asignaturas en docente
-            cbb_asignaturas_en_docente_modif.getItems().setAll(asignaturas);
+            cbbAsignaturasEnDocenteModif.getItems().setAll(asignaturas);
             
             //con la misma lista cargamos el cbb donde para quitar la asignatura en caso que desee hacerlo
-            cbb_quitar_asignatura.getItems().setAll(asignaturas);
+            cbbQuitarAsignatura.getItems().setAll(asignaturas);
             
             //cargamos el cbb para agregar, este lo cargamos con las asignaturas del instituto seleccionado
-            List<Asignatura> asignaturas_i = instituto.getAllAsignaturas();
+            List<Asignatura> asignaturas_i = instituto.obtenerTodasAsignaturas();
             
-            cbb_add_asignatura_edicion.getItems().setAll(asignaturas_i);
+            cbbAddAsignaturaEdicion.getItems().setAll(asignaturas_i);
             
-            txt_modif_contador_asignaturas.setText(String.valueOf(asignaturas.size()));
+            txtModifContadorAsignaturas.setText(String.valueOf(asignaturas.size()));
             
         } catch (Exception e) {
             System.err.println("Error al cargar asignaturas: " + e.getMessage());
@@ -500,8 +500,8 @@ public class PrincipalController implements Initializable {
     @FXML
     private void seleccionarInstituto() {
         // El ComboBox ya tiene el objeto seleccionado
-        instituto = cbb_institutos.getValue();
-        txt_instituto_seleccionado.setText(instituto.getDenominacion());
+        instituto = cbbInstitutos.getValue();
+        txtInstitutoSeleccionado.setText(instituto.getDenominacion());
         if (instituto != null) {
             System.out.println("Seleccionaste: " + instituto.getDenominacion());
 
@@ -516,7 +516,7 @@ public class PrincipalController implements Initializable {
     @FXML
     private void seleccionarAsignaturaEnDocenteAlta() {
         // El ComboBox ya tiene el objeto seleccionado
-        asignatura = cbb_asignaturas_en_docente_alta.getValue();
+        asignatura = cbbAsignaturasEnDocenteAlta.getValue();
         if (asignatura != null) {
             System.out.println("Seleccionaste: " + asignatura.getNombre());
 
@@ -528,7 +528,7 @@ public class PrincipalController implements Initializable {
        @FXML
     private void seleccionarAsignaturaEnDocenteEdicion() {
         // El ComboBox ya tiene el objeto seleccionado
-        asignatura = cbb_asignaturas_en_docente_modif.getValue();
+        asignatura = cbbAsignaturasEnDocenteModif.getValue();
         if (asignatura != null) {
             System.out.println("Seleccionaste: " + asignatura.getNombre());
 
@@ -539,25 +539,25 @@ public class PrincipalController implements Initializable {
 
     private void cargarDocentesDelInstituto(Instituto instituto) {
         // TODO: implementar después
-        System.out.println("Docentes del instituto: " + instituto.getAllDocentes().size());
+        System.out.println("Docentes del instituto: " + instituto.obtenerTodosDocentes().size());
     }
     
     private void cargarAsignaturasDelInstituto(Instituto instituto) {
         // TODO: implementar después
-        System.out.println("Asignaturas del instituto: " + instituto.getAllAsignaturas().size());
+        System.out.println("Asignaturas del instituto: " + instituto.obtenerTodasAsignaturas().size());
     }
 
     @FXML
     public void agregarDocente(){
         try{
             dao.beginTransaction();
-            String legajo = txt_legajo.getText();
-            String documento = txt_documento.getText();
-            String nombre = txt_nombre_docente.getText();
-            String apellido = txt_apellido_docente.getText();
-            String fecha_nacimiento = txt_fecha_nacimiento.getText();
-            String dir_notificaciones = txt_dir_notificaciones.getText();
-            String carga_horaria = txt_carga_horaria.getText();
+            String legajo = txtLegajo.getText();
+            String documento = txtDocumento.getText();
+            String nombre = txtNombreDocente.getText();
+            String apellido = txtApellidoDocente.getText();
+            String fecha_nacimiento = txtFechaNacimiento.getText();
+            String dir_notificaciones = txtDirNotificaciones.getText();
+            String carga_horaria = txtCargaHoraria.getText();
             
             
             
@@ -566,17 +566,17 @@ public class PrincipalController implements Initializable {
             docente.setDocumento(documento);
             docente.setNombre(nombre);
             docente.setApellido(apellido);
-            docente.setFecha_nacimiento(fecha_nacimiento);
-            docente.setDireccion_notificaciones(dir_notificaciones);
+            docente.setFechaNacimiento(fecha_nacimiento);
+            docente.setDireccionNotificaciones(dir_notificaciones);
             docente.setCargaHoraria(carga_horaria);
             
             //asigno el instituto a docente
             docente.setInstituto(instituto);
             
-            dao.insertDocente(docente);
+            dao.agregarDocente(docente);
             
             //con el helper establecemos la bidireccionalidad asi en tiempo de ejecución puedo ver los docentes del instituto
-            instituto.addDocente(docente);
+            instituto.agregarDocente(docente);
             
             dao.commitTransaction();
             //reseteamos el objeto docente para en caso de querer agregar más en tiempo de ejecución se reinicie a cero
@@ -598,18 +598,18 @@ public class PrincipalController implements Initializable {
             
             dao.beginTransaction();
             
-            String nombre = txt_nombre_asignatura.getText();
+            String nombre = txtNombreAsignatura.getText();
             
-            String descripcion = txt_descripcion.getText();
+            String descripcion = txtDescripcion.getText();
             
             Asignatura asignatura = new Asignatura(nombre,descripcion);
             System.out.println(instituto.getDenominacion());
             asignatura.setInstituto(instituto);
             
-            dao.insertAsignatura(asignatura);
+            dao.agregarAsignatura(asignatura);
             
             //usamos el helper para actualizar la lista en memoria, sin esto no podría ver la asignatura recientemente guardada en pantalla
-            instituto.addAsignatura(asignatura);
+            instituto.agregarAsignatura(asignatura);
             
             //al crear la asignatura cargamos el combobox de asignaturas en docente para que se actualice
             cargarComboBoxAsignaturasAlta();
@@ -626,12 +626,12 @@ public class PrincipalController implements Initializable {
     
     @FXML
     public void asignarAsignaturaADocenteEnAlta(){
-        //asignatura = cbb_asignaturas_en_docente_alta.getValue();
+        //asignatura = cbbAsignaturasEnDocenteAlta.getValue();
         System.out.println(asignatura);
         if(asignatura != null){
             
-            docente.addAsignaturas(asignatura);
-            incrementarAsignaturaEnDocenteAlta(docente.getAllAsignaturas().size());
+            docente.agregarAsignatura(asignatura);
+            incrementarAsignaturaEnDocenteAlta(docente.obtenerTodasAsignaturas().size());
         
         }
     }
@@ -640,47 +640,47 @@ public class PrincipalController implements Initializable {
     //esta función es para actualizar el cbb de asignaturas en docente en la interfaz modificanción en tiempo de ejecución
     private void refrescarCbbAsignaturas(){
         //obtengo las asignaturas del docente elegido en edición
-        List<Asignatura> asignaturas = docente.getAllAsignaturas();
+        List<Asignatura> asignaturas = docente.obtenerTodasAsignaturas();
             
         System.out.println("asignaturas : " + asignaturas.size());
             
             
         //cargamos el cbb de las asignaturas en docente
-        cbb_asignaturas_en_docente_modif.getItems().setAll(asignaturas);
-        cbb_quitar_asignatura.getItems().setAll(asignaturas);
+        cbbAsignaturasEnDocenteModif.getItems().setAll(asignaturas);
+        cbbQuitarAsignatura.getItems().setAll(asignaturas);
     }
     
     @FXML
     public void asignarAsignaturaADocenteEdicion(){
-        asignatura = cbb_add_asignatura_edicion.getValue();
+        asignatura = cbbAddAsignaturaEdicion.getValue();
         System.out.println(asignatura);
         if(asignatura != null){
             
-            docente.addAsignaturas(asignatura);
+            docente.agregarAsignatura(asignatura);
             refrescarCbbAsignaturas();
-            incrementarAsignaturaEnDocenteEdicion(docente.getAllAsignaturas().size());
+            incrementarAsignaturaEnDocenteEdicion(docente.obtenerTodasAsignaturas().size());
         
         }
     }
     
     private void incrementarAsignaturaEnDocenteAlta(int cantidad_asignaturas) {
         //casteamos el int a string para colocarlo en pantalla
-        txt_contador_asignaturas.setText(String.valueOf(cantidad_asignaturas));
+        txtContadorAsignaturas.setText(String.valueOf(cantidad_asignaturas));
     }
     
     private void incrementarAsignaturaEnDocenteEdicion(int cantidad_asignaturas) {
         //casteamos el int a string para colocarlo en pantalla
-        txt_modif_contador_asignaturas.setText(String.valueOf(cantidad_asignaturas));
+        txtModifContadorAsignaturas.setText(String.valueOf(cantidad_asignaturas));
     }
     
     @FXML
     public void quitarAsignaturaADocente(){
-        asignatura = cbb_quitar_asignatura.getValue();
+        asignatura = cbbQuitarAsignatura.getValue();
         System.out.println(asignatura);
         if(asignatura != null){
             docente.quitarAsignatura(asignatura);
             refrescarCbbAsignaturas();
-            decrementarAsignaturaEnDocente(docente.getAllAsignaturas().size());
+            decrementarAsignaturaEnDocente(docente.obtenerTodasAsignaturas().size());
             
         }
     }
@@ -691,7 +691,7 @@ public class PrincipalController implements Initializable {
         /*if(cantidad_asignaturas != 0){
             cantidad_asignaturas = cantidad_asignaturas - 1;
         }*/
-        txt_modif_contador_asignaturas.setText(String.valueOf(cantidad_asignaturas));
+        txtModifContadorAsignaturas.setText(String.valueOf(cantidad_asignaturas));
     }
     
     //Listas
@@ -701,7 +701,7 @@ public class PrincipalController implements Initializable {
         try{
             List<Instituto> institutos = obtenerTodosLosInstitutos();
             //Asignar la lista a la tabla
-            tabla_institutos.getItems().setAll(institutos);
+            tablaInstitutos.getItems().setAll(institutos);
         }
         catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
@@ -711,9 +711,9 @@ public class PrincipalController implements Initializable {
     
     public void listarDocentes(Instituto instituto){
         try{
-            System.out.println("lista ver docentes, del instituto : " + instituto.getDenominacion() + "docentes : " + instituto.getAllDocentes().size());
-            List<Docente> docentes = instituto.getAllDocentes();
-            tabla_docentes.getItems().setAll(docentes);
+            System.out.println("lista ver docentes, del instituto : " + instituto.getDenominacion() + "docentes : " + instituto.obtenerTodosDocentes().size());
+            List<Docente> docentes = instituto.obtenerTodosDocentes();
+            tablaDocentes.getItems().setAll(docentes);
         }
         catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
@@ -723,8 +723,8 @@ public class PrincipalController implements Initializable {
     
     public void listarAsignaturas(Docente docente){
         try{
-            List<Asignatura> asignaturas = docente.getAllAsignaturas();
-            tabla_asignaturas.getItems().setAll(asignaturas);
+            List<Asignatura> asignaturas = docente.obtenerTodasAsignaturas();
+            tablaAsignaturas.getItems().setAll(asignaturas);
         }
         catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
@@ -735,7 +735,7 @@ public class PrincipalController implements Initializable {
     private void eliminarInstituto(Instituto instituto) {
         try{
             dao.beginTransaction();
-            dao.deleteInstituto(instituto.getId());
+            dao.borrarInstituto(instituto.getId());
             dao.commitTransaction();
         }
         catch (Exception e) {
@@ -747,12 +747,12 @@ public class PrincipalController implements Initializable {
     @FXML 
     public void modificarInstituto(){
         System.out.println("Instituto a modificar : " + instituto);
-        System.out.println("campo del textfield :" + txt_denominacion_modif.getText());
+        System.out.println("campo del textfield :" + txtDenominacionModif.getText());
         try{
             dao.beginTransaction();
-            instituto.setDenominacion(txt_denominacion_modif.getText());
+            instituto.setDenominacion(txtDenominacionModif.getText());
             dao.commitTransaction();
-            bloque_editar_instituto.setVisible(false);
+            bloqueEditarInstituto.setVisible(false);
             listarInstitutos();
         }
         catch (Exception e) {
@@ -762,21 +762,21 @@ public class PrincipalController implements Initializable {
     }
     
     private void abrirInterfazEdicionDocente(Docente docente) {
-        bloque_alta_docente.setVisible(false);
-        bloque_editar_docente.setVisible(true);
+        bloqueAltaDocente.setVisible(false);
+        bloqueEditarDocente.setVisible(true);
         
         //cargo los campos en la interfaz edición
         cargarCamposEdicionDocente(docente);
     }
 
     private void cargarCamposEdicionDocente(Docente docente) {
-        txt_modif_legajo.setText(docente.getLegajo());
-        txt_modif_documento.setText(docente.getDocumento());
-        txt_nombre_modif_docente.setText(docente.getNombre());
-        txt_apellido_modif_docente.setText(docente.getApellido());
-        txt_modif_fecha_nacimiento.setText(docente.getFecha_nacimiento());
-        txt_modif_dir_notificaciones.setText(docente.getDireccion_notificaciones());
-        txt_modif_carga_horaria.setText(docente.getCargaHoraria());
+        txtModifLegajo.setText(docente.getLegajo());
+        txtModifDocumento.setText(docente.getDocumento());
+        txtNombreModifDocente.setText(docente.getNombre());
+        txtApellidoModifDocente.setText(docente.getApellido());
+        txtModifFechaNacimiento.setText(docente.getFechaNacimiento());
+        txtModifDirNotificaciones.setText(docente.getDireccionNotificaciones());
+        txtModifCargaHoraria.setText(docente.getCargaHoraria());
     }
     
     @FXML
@@ -786,13 +786,13 @@ public class PrincipalController implements Initializable {
            
            dao.beginTransaction();
 
-            docente.setLegajo(txt_modif_legajo.getText());
-            docente.setDocumento(txt_modif_documento.getText());
-            docente.setNombre(txt_nombre_modif_docente.getText());
-            docente.setApellido(txt_apellido_modif_docente.getText());
-            docente.setFecha_nacimiento(txt_modif_fecha_nacimiento.getText());
-            docente.setDireccion_notificaciones(txt_modif_dir_notificaciones.getText());
-            docente.setCargaHoraria(txt_modif_carga_horaria.getText());
+            docente.setLegajo(txtModifLegajo.getText());
+            docente.setDocumento(txtModifDocumento.getText());
+            docente.setNombre(txtNombreModifDocente.getText());
+            docente.setApellido(txtApellidoModifDocente.getText());
+            docente.setFechaNacimiento(txtModifFechaNacimiento.getText());
+            docente.setDireccionNotificaciones(txtModifDirNotificaciones.getText());
+            docente.setCargaHoraria(txtModifCargaHoraria.getText());
             
             dao.commitTransaction();
         }
@@ -812,8 +812,8 @@ public class PrincipalController implements Initializable {
            
             dao.beginTransaction();
             
-                asignatura.setNombre(txt_nombre_asignatura_modif.getText());
-                asignatura.setDescripcion(txt_descripcion_modif.getText());
+                asignatura.setNombre(txtNombreAsignaturaModif.getText());
+                asignatura.setDescripcion(txtDescripcionModif.getText());
                             
             dao.commitTransaction();
         }
@@ -826,16 +826,16 @@ public class PrincipalController implements Initializable {
     }
     
     private void abrirInterfazEdicionAsignatura(Asignatura asignatura) {
-        bloque_alta_asignatura.setVisible(false);
-        bloque_editar_asignatura.setVisible(true);
+        bloqueAltaAsignatura.setVisible(false);
+        bloqueEditarAsignatura.setVisible(true);
         
         //cargo los campos en la interfaz edición
         cargarCamposEdicionAsignatura(asignatura);
     }
     
     private void cargarCamposEdicionAsignatura(Asignatura asignatura){
-        txt_nombre_asignatura_modif.setText(asignatura.getNombre());
-        txt_descripcion_modif.setText(asignatura.getDescripcion());
+        txtNombreAsignaturaModif.setText(asignatura.getNombre());
+        txtDescripcionModif.setText(asignatura.getDescripcion());
     }
     
     @FXML
@@ -847,19 +847,19 @@ public class PrincipalController implements Initializable {
     }
 
     private void mostrarBloquesOcultos() {
-        bloque_alta_docente.setVisible(true);
-        bloque_alta_asignatura.setVisible(true);
-        bloque_instituto_elegido.setVisible(true);
-        tabla_institutos.setVisible(true);
-        tabla_docentes.setVisible(true);
-        tabla_asignaturas.setVisible(true);
+        bloqueAltaDocente.setVisible(true);
+        bloqueAltaAsignatura.setVisible(true);
+        bloqueInstitutoElegido.setVisible(true);
+        tablaInstitutos.setVisible(true);
+        tablaDocentes.setVisible(true);
+        tablaAsignaturas.setVisible(true);
     }
 
     private void ocultarBloquesIniciales() {
-        bloque_mensaje_inicial.setVisible(false);
-        bloque_buscar_instituto.setVisible(false);
-        bloque_alta_instituto.setVisible(false);
-        btn_ingresar.setVisible(false);
+        bloqueMensajeInicial.setVisible(false);
+        bloqueBuscarInstituto.setVisible(false);
+        bloqueAltaInstituto.setVisible(false);
+        btnIngresar.setVisible(false);
 
 
     }
@@ -867,13 +867,13 @@ public class PrincipalController implements Initializable {
     
     @FXML
     public void cerrarEdicionAsignatura(){
-        bloque_alta_asignatura.setVisible(true);
-        bloque_editar_asignatura.setVisible(false);
+        bloqueAltaAsignatura.setVisible(true);
+        bloqueEditarAsignatura.setVisible(false);
     }
     
     @FXML
     public void cerrarEdicionDocente(){
-        bloque_alta_docente.setVisible(true);
-        bloque_editar_docente.setVisible(false);
+        bloqueAltaDocente.setVisible(true);
+        bloqueEditarDocente.setVisible(false);
     }
 }

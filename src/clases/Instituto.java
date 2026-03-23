@@ -45,33 +45,33 @@ public class Instituto {
         return this.denominacion;
     }
 
-    public void addDocente(Docente docente) {
+    public void agregarDocente(Docente docente) {
         this.docentes.add(docente);
         docente.setInstituto(this); //establecemos la bidireccionalidad
     }
 
-    public void removeDocente(Docente docente){
+    public void eliminarDocente(Docente docente){
         docentes.remove(docente);
         docente.setInstituto(null);
     }
     
-    public void addAsignatura(Asignatura asignatura) {
+    public void agregarAsignatura(Asignatura asignatura) {
         this.asignaturas.add(asignatura);
         asignatura.setInstituto(this); //establecemos la bidireccionalidad
     }
 
     
-    public void removeAsignatura(Asignatura asignatura){
+    public void eliminarAsignatura(Asignatura asignatura){
         asignaturas.remove(asignatura);
         asignatura.setInstituto(null);
     }
     
     
-    public List<Docente> getAllDocentes() {
+    public List<Docente> obtenerTodosDocentes() {
         return docentes;
     }
 
-    public List<Asignatura> getAllAsignaturas() {
+    public List<Asignatura> obtenerTodasAsignaturas() {
         return asignaturas;
     }
 
